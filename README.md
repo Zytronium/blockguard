@@ -6,7 +6,7 @@ their server safe.
 ---
 
 ## Report Categories and Subcategories
-Reports are a trust-based system and expect users to use their best judgement in order to report the category they think 
+Reports are a trust-based system and expect users to use their best judgment in order to report the category they think 
 the entity they are reporting is in.
 
 Categories & subcategories include:
@@ -40,3 +40,17 @@ devices or a VPN)
 ## Displaying Reports
 Firstly, IP addresses will be hidden until the user agrees to ToS (which will primarily state that users cannot use listed
 IPs for any illegal or malicious purposes and that IPs shown will only be used for defensive and informational purposes)
+
+Reports will be displayed in a list on the home page if they have enough reports. This list will display the following
+for each entity:
+- Username
+- Most reported category and subcategory
+- Number of reports
+- Last reported time
+
+Click on a report to also show:
+- Associated IP address(es) (if user agrees to ToS)
+- Comments on this entity
+- Pie chart of reported categories and subcategories
+- Command to run to block the entity from your server
+- Takedown request form
