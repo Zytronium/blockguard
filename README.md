@@ -54,3 +54,9 @@ Click on a report to also show:
 - Pie chart of reported categories and subcategories
 - Command to run to block the entity from your server
 - Takedown request form
+
+Users will also be able to search for entities by username or IP address, as well as filter reports by category and 
+subcategory.
+
+Entities will only show up on the watch list if they have been reported more than 3 times in the last 90 days. This
+will change to 5+ times in the last 30 days if this website gets decent traffic.
