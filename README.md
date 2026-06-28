@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BlockGuard
 
-## Getting Started
+BlockGuard is a community-maintained database of reported suspicious/bot Minecraft accounts to help server owners keep 
+their server safe.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Report Categories and Subcategories
+Reports are a trust-based system and expect users to use their best judgement in order to report the category they think 
+the entity they are reporting is in.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Categories & subcategories include:
+- Bot
+  - scanner
+  - potentially malicious
+  - other/unknown
+- Hacker
+  - malicious hacker
+  - ethical hacker
+  - other/unknown
+- Malicious Player
+  - griefer
+  - troller
+  - other/unknown
+- Unknown
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Report form fields
+- Category*
+- Subcategory*
+- Account Username*
+- IP Address(es) (maybe required? Not all servers log IPs)
+- Did the entity cause any harm on your server?*
+- Threat Level (optional)
+- Additional Comments (optional)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Reports also save the reporter's IP address (for rate limiting) and time of report.
+One report per entity per IP address per week (meaning you can't make the same report twice in a week without multiple 
+devices or a VPN)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Displaying Reports
+Firstly, IP addresses will be hidden until the user agrees to ToS (which will primarily state that users cannot use listed
+IPs for any illegal or malicious purposes and that IPs shown will only be used for defensive and informational purposes)

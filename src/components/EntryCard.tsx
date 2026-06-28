@@ -1,0 +1,1 @@
+/* detail page/card: pie chart (Recharts), full report list, ban command generator */

@@ -1,0 +1,1 @@
+/* table with rank, username/IP(s), totla reports, top category badge, and filter */

@@ -1,26 +1,256 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background:        #0a0e1a;
+  --background-card:   #0f1525;
+  --background-subtle: #131929;
+  --border:            #1e2d45;
+  --border-subtle:     #162035;
+
+  /* foreground colors */
+  --foreground: #f7f8fb;
+  --foreground-muted: #7589ac;
+  --foreground-faint: #41526f;
+
+  /* primary */
+  --primary:           #4ade80;
+  --primary-dim:       #22c55e;
+  --primary-dark:       #1C6D3FFF;
+  --primary-glow:      rgba(74, 222, 128, 0.15);
+
+  /* category */
+  --cat-bot:           #facc15;
+  --cat-bot-dim:       rgba(250, 204, 21, 0.12);
+  --cat-hacker:        #f87171;
+  --cat-hacker-dim:    rgba(248, 113, 113, 0.12);
+  --cat-malicious:     #fb923c;
+  --cat-malicious-dim: rgba(251, 146, 60, 0.12);
+  --cat-unknown: #a9bac3;
+  --cat-unknown-dim: rgb(100 104 107 / 0.12);
+
+  /* severity / status */
+  --danger:            #ef4444;
+  --danger-dim:        rgba(239, 68, 68, 0.12);
+  --warning:           #f59e0b;
+  --warning-dim:       rgba(245, 158, 11, 0.12);
+  --safe:              #4ade80;
+  --safe-dim:          rgba(74, 222, 128, 0.12);
+
+  /* shadows and radius */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-glow-green: 0 0 16px rgba(74, 222, 128, 0.2);
+  --shadow-glow-red:   0 0 16px rgba(239, 68, 68, 0.2);
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background:       var(--background);
+  --color-background-card:  var(--background-card);
+  --color-background-subtle:var(--background-subtle);
+  --color-border:           var(--border);
+  --color-foreground:       var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-primary:          var(--primary);
+  --color-primary-dim:      var(--primary-dim);
+  --color-primary-dark:     var(--primary-dark);
+  --color-cat-bot:          var(--cat-bot);
+  --color-cat-hacker:       var(--cat-hacker);
+  --color-cat-malicious:    var(--cat-malicious);
+  --color-danger:           var(--danger);
+  --color-warning:          var(--warning);
+  --color-safe:             var(--safe);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100dvh;
 }
+
+/* typography */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 { font-size: 2.75rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 {
+  font-size: 0.875rem;
+  line-height: 1.125;
+  color: var(--foreground-muted);
+}
+
+/* monospace for IPs, usernames, code */
+.mono, code, kbd, pre,
+[data-type="ip"],
+[data-type="username"] {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code",
+  ui-monospace, "Courier New", monospace;
+  font-size: 0.9em;
+  letter-spacing: 0.02em;
+}
+
+pre, code {
+  background: var(--background-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.4em;
+}
+
+pre {
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+a:hover {
+  color: var(--foreground);
+  opacity: 0.9;
+}
+
+/* text selection highlight */
+::selection {
+  background: rgb(74 222 128 / 0.33);
+  color: var(--foreground);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-faint);
+}
+
+/* focus */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* utility classes */
+.card {
+  background: var(--background-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem;
+}
+
+.card-hover {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.card-hover:hover {
+  border-color: var(--primary-dim);
+  box-shadow: var(--shadow-glow-green);
+  transform: translateY(-1px);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2em 0.65em;
+  border-radius: 99px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.badge-bot {
+  background: var(--cat-bot-dim);
+  color: var(--cat-bot);
+  border: 1px solid rgba(250, 204, 21, 0.25);
+}
+
+.badge-hacker {
+  background: var(--cat-hacker-dim);
+  color: var(--cat-hacker);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.badge-malicious {
+  background: var(--cat-malicious-dim);
+  color: var(--cat-malicious);
+  border: 1px solid rgba(251, 146, 60, 0.25);
+}
+
+.badge-unknown {
+  background: var(--cat-unknown-dim);
+  color: var(--cat-unknown);
+  border: 1px solid rgb(242 246 250 / 0.25);
+}
+
+.badge-safe {
+  background: var(--safe-dim);
+  color: var(--safe);
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+
+.badge-danger {
+  background: var(--danger-dim);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.glow-green { box-shadow: var(--shadow-glow-green); }
+.glow-red   { box-shadow: var(--shadow-glow-red); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 1.5rem 0;
+}
+
+.divider-green {
+  border: none;
+  border-top: 1px solid var(--primary-dark);
+  margin: 1.5rem 0;
+}
+

@@ -1,0 +1,1 @@
+/* Colored pill: bot (yellow), hacker (red), malicious player (orange) */

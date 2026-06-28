@@ -1,0 +1,1 @@
+/* select entries from leaderboard, pick platform (vanilla/paper/firewall), copy script */

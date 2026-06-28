@@ -1,0 +1,1 @@
+/* static content containing tips like "whitelist your server" */

@@ -1,0 +1,1 @@
+/* Username + IP fields (at least 1 required), category/subcategory selects, optional notes (maybe) */
